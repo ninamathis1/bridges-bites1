@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bridges & Bites – Pittsburgh Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100vw;
+            background: #000;
+        }
+
+        /* -------- GOLD BUTTON STYLING -------- */
+        .gold-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 12px 18px;
+            background: #ffd43b;
+            color: #000;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 12px rgba(255,212,59,0.7);
+            transition: 0.2s;
+            z-index: 9999;
+        }
+        .gold-button:hover {
+            background: #ffea89;
+            box-shadow: 0 0 20px rgba(255,212,59,1);
+        }
+
+        /* Address input box */
+        #addressBox {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            padding: 10px;
+            width: 220px;
+            border-radius: 10px;
+            border: 2px solid #ffd43b;
+            background: #111;
+            color: white;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+<button class="gold-button" onclick="locateUser()">You Are Here</button>
+<input id="addressBox" type="text" placeholder="Enter address… (optional)" />
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // ------------------------------------------------------------
+    // INITIALIZE MAP
+    // ------------------------------------------------------------
+    var map = L.map('map', {
+        zoomControl: false,
+        attributionControl: false
+    }).setView([40.4406, -79.9959], 13);
+
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+        maxZoom: 18
+    }).addTo(map);
+
+    // Gold pin icon
+    var goldPin = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/535/535239.png',
+        iconSize: [34, 34],
+        iconAnchor: [17, 34]
+    });
+
+    // ------------------------------------------------------------
+    // RESTAURANT LOCATIONS WITH DESTINATION PAGES
+    // ------------------------------------------------------------
+    var locations = [
+        {
+            name: "Urban Tap (Shadyside)",
+            coords: [40.451682, -79.934372],
+            page: "page5.html"
+        },
+        {
+            name: "Primanti Bros (Southside)",
+            coords: [40.428410, -79.985992],
+            page: "page3.html"
+        },
+        {
+            name: "CAVA (Oakland)",
+            coords: [40.444300, -79.954650],
+            page: "page4.html"
+        }
+    ];
+
+    // Add markers with click-to-open-page
+    locations.forEach(loc => {
+        L.marker(loc.coords, { icon: goldPin })
+            .addTo(map)
+            .on("click", () => {
+                window.location.href = loc.page;
+            });
+    });
+
+    // ------------------------------------------------------------
+    // USER LOCATION
+    // ------------------------------------------------------------
+    var userMarker;
+
+    function locateUser() {
+        if (userMarker) map.removeLayer(userMarker);
+
+        map.locate({ setView: true, maxZoom: 15 });
+
+        map.on("locationfound", function(e) {
+            userMarker = L.marker(e.latlng, {
+                icon: L.icon({
+                    iconUrl: "https://cdn-icons-png.flaticon.com/512/64/64113.png",
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 32]
+                })
+            })
+            .addTo(map)
+            .bindPopup("<b>You Are Here</b>")
+            .openPopup();
+
+            calculateDistances(e.latlng);
+        });
+    }
+
+    // ------------------------------------------------------------
+    // DISTANCE CALCULATOR
+    // ------------------------------------------------------------
+    function calculateDistances(userLatLng) {
+        locations.forEach(loc => {
+            let miles = (map.distance(userLatLng, loc.coords) / 1609.34).toFixed(2);
+            console.log(loc.name + ": " + miles + " miles away");
+        });
+    }
+
+    // ------------------------------------------------------------
+    // ADDRESS SEARCH (NOMINATIM)
+    // ------------------------------------------------------------
+    document.getElementById("addressBox").addEventListener("change", function() {
+        let address = this.value;
+        if (!address) return;
+
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.length === 0) return alert("Address not found!");
+
+                let lat = parseFloat(data[0].lat);
+                let lon = parseFloat(data[0].lon);
+                let userLatLng = [lat, lon];
+
+                if (userMarker) map.removeLayer(userMarker);
+
+                userMarker = L.marker(userLatLng, {
+                    icon: L.icon({
+                        iconUrl: "https://cdn-icons-png.flaticon.com/512/64/64113.png",
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32]
+                    })
+                })
+                .addTo(map)
+                .bindPopup("<b>Your Entered Location</b>")
+                .openPopup();
+
+                map.flyTo(userLatLng, 14);
+
+                calculateDistances(userLatLng);
+            });
+    });
+</script>
+
+</body>
+</html>

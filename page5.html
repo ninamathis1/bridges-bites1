@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridges & Bites – Urban Tap Shadyside</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        /* HEADER / LOGO AREA */
+        .header {
+            width: 100%;
+            padding: 30px 0;
+            text-align: center;
+            background: #111;
+            box-shadow: 0 0 30px rgba(255, 212, 59, 0.2);
+        }
+        .header img {
+            width: 300px;
+            max-width: 80%;
+        }
+
+        /* MAIN CONTENT WRAPPER */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* SECTION TITLES */
+        h2 {
+            color: #ffd43b;
+            font-size: 28px;
+            border-left: 6px solid #ffd43b;
+            padding-left: 12px;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(255, 212, 59, 0.1);
+        }
+        .info-item {
+            margin-bottom: 12px;
+        }
+        .info-label {
+            color: #ffd43b;
+            font-weight: bold;
+        }
+
+        /* MENU LIST */
+        .menu-list li {
+            margin-bottom: 6px;
+        }
+
+        /* FIXED PHOTO GALLERY */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .photo-slot {
+            width: 100%;
+            height: 180px;        /* controls height of all images */
+            object-fit: cover;    /* makes all pictures the SAME SIZE */
+            border-radius: 10px;
+            display: block;
+            border: none;
+            background: #111;
+        }
+
+        /* PERSONAL REVIEW */
+        .review-box {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(255, 212, 59, 0.1);
+            margin-bottom: 60px;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            display: block;
+            width: 180px;
+            margin: 30px auto 60px;
+            padding: 12px;
+            text-align: center;
+            background: #ffd43b;
+            color: #000;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 0 12px rgba(255, 212, 59, 0.7);
+            transition: 0.2s;
+        }
+        .back-btn:hover {
+            background: #ffea89;
+            box-shadow: 0 0 20px rgba(255, 212, 59, 1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER WITH EMBEDDED LOGO -->
+<div class="header">
+    <img src="logo.jpeg" alt="Bridges & Bites Logo">
+</div>
+
+<div class="content">
+
+    <!-- TITLE -->
+    <h2>Urban Tap – Shadyside</h2>
+
+    <!-- PHOTO GALLERY -->
+    <div class="gallery">
+        <img class="photo-slot" src="image10.jpeg" alt="Urban Tap Photo 1">
+        <img class="photo-slot" src="image11.jpeg" alt="Urban Tap Photo 2">
+        <img class="photo-slot" src="image12.jpeg" alt="Urban Tap Photo 3">
+        <img class="photo-slot" src="image13.jpeg" alt="Urban Tap Photo 4">
+    </div>
+
+    <!-- RESTAURANT INFO -->
+    <div class="info-box">
+
+        <div class="info-item">
+            <span class="info-label">📍 Location:</span><br>
+            216 S Highland Ave, Pittsburgh, PA 15206  
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">💲 Price Range:</span><br>
+            $15–$25 per meal  
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">🍽 Menu Highlights:</span>
+            <ul class="menu-list">
+                <li>Brunch platters</li>
+                <li>Craft burgers</li>
+                <li>Signature mac & cheese</li>
+                <li>Chicken & waffles</li>
+                <li>Large beer & cocktail selection</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- PERSONAL REVIEW -->
+    <h2>My Review</h2>
+    <div class="review-box">
+        <p>
+           Urban Tap in Shadyside has a vibe that is relaxed and cozy enough for good conversation, but lively enough to feel like you’re out on the town rather than stuck in a library. 
+           The food and drinks are solid: I appreciated the shareable plates and craft drinks, which made it easy for my friends and I to try a bit of everything and find something we both liked. 
+           What I really liked was that it felt casual but a little special — not too fancy or formal, but still more elevated than a typical grab-and-go spot. Perfect for a dinner date when you want something that feels like more than just “grab something quick.” 
+           If you’re in Shadyside and looking for a chill, charming place to go out with someone or friends, Urban Tap is definitely worth checking out.  
+           – Nina Mathis
+        </p>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <a href="page2.html" class="back-btn">← Back to Map</a>
+
+</div>
+
+</body>
+</html>

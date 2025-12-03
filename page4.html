@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridges & Bites – CAVA Oakland</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            padding: 30px 0;
+            text-align: center;
+            background: #111;
+            box-shadow: 0 0 30px rgba(255, 212, 59, 0.2);
+        }
+        .header img {
+            width: 300px;
+            max-width: 80%;
+        }
+
+        /* CONTENT CONTAINER */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* TITLES */
+        h2 {
+            color: #ffd43b;
+            font-size: 28px;
+            border-left: 6px solid #ffd43b;
+            padding-left: 12px;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(255, 212, 59, 0.1);
+        }
+        .info-item {
+            margin-bottom: 12px;
+        }
+        .info-label {
+            color: #ffd43b;
+            font-weight: bold;
+        }
+
+        /* MENU LIST */
+        .menu-list li {
+            margin-bottom: 6px;
+        }
+
+        /* GALLERY (UNIFORM FIXED IMAGES) */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .photo-slot {
+            width: 100%;
+            height: 180px;        /* uniform height */
+            object-fit: cover;    /* makes every image same shape */
+            border-radius: 10px;
+            background: #111;
+            display: block;
+        }
+
+        /* REVIEW BOX */
+        .review-box {
+            background: #111;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 0 20px rgba(255, 212, 59, 0.1);
+            margin-bottom: 60px;
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            display: block;
+            width: 180px;
+            margin: 30px auto 60px;
+            padding: 12px;
+            text-align: center;
+            background: #ffd43b;
+            color: #000;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 0 12px rgba(255, 212, 59, 0.7);
+            transition: 0.2s;
+        }
+        .back-btn:hover {
+            background: #ffea89;
+            box-shadow: 0 0 20px rgba(255, 212, 59, 1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <img src="data:image/png;base64,iVBOR..." alt="Bridges & Bites Logo">
+</div>
+
+<div class="content">
+
+    <!-- PAGE TITLE -->
+    <h2>CAVA – Oakland</h2>
+
+    <!-- CLEAN + FIXED PHOTO GALLERY -->
+    <div class="gallery">
+        <img class="photo-slot" src="image5.jpeg" alt="CAVA Photo 1">
+        <img class="photo-slot" src="image6 copy.jpeg" alt="CAVA Photo 2">
+        <img class="photo-slot" src="image7 copy.jpeg" alt="CAVA Photo 3">
+        <img class="photo-sl
+    </div>
+
+    <!-- INFO SECTION -->
+    <div class="info-box">
+        <div class="info-item">
+            <span class="info-label">📍 Location:</span><br>
+            3712 Forbes Ave, Pittsburgh, PA 15213
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">💲 Price Range:</span><br>
+            $11–$15 per meal
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">🥙 Menu Highlights:</span>
+            <ul class="menu-list">
+                <li>Harissa avocado bowl</li>
+                <li>Greens + grains bowl</li>
+                <li>Spicy lamb meatballs</li>
+                <li>Falafel & roasted veggies</li>
+                <li>Pita + tzatziki combo</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- REVIEW -->
+    <h2>My Review</h2>
+    <div class="review-box">
+        <p>
+            The new CAVA in Oakland just opened recently, and I’ve already been there more than ten times (actually). It’s quickly become one of my go-to spots between classes. 
+            <br><br>
+            The food is affordable, healthy, and surprisingly filling — basically the perfect combo for a college student trying to survive the week. Everything tastes fresh, the portions are generous, and the options make it easy to switch things up without getting bored.
+            <br><br>
+            Oakland really needed something like this, and CAVA nailed it.
+        </p>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <a href="page2.html" class="back-btn">← Back to Map</a>
+
+</div>
+
+</body>
+</html>
